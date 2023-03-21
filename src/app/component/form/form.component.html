@@ -1,0 +1,27 @@
+<p>form works!</p>
+<form #myForm="ngForm" (ngSubmit)="myForm.valid && onSubmit()">
+    <fieldset>
+        <label for="user-nom">Nom</label>
+        <input id="user-nom" name="user-nom" [(ngModel)]="model.nom" #nom="ngModel" type="text" required>
+        <div *ngIf="nom.errors">
+            <span *ngIf="nom.errors?.['required']">Le nom est requis</span>
+        </div>
+    </fieldset>
+    <fieldset>
+        <label for="user-prenom">Prénom</label>
+        <input id="user-prenom" name="user-prenom" [(ngModel)]="model.prenom" type="text" #prenom="ngModel" required>
+        <div *ngIf="prenom.errors">
+            <span *ngIf="prenom.errors?.['required']">Le prenom est requis</span>
+        </div>
+    </fieldset>
+    <fieldset>
+        <label for="user-email">Email</label>
+        <input id="user-email" name="user-email" [(ngModel)]="model.contact" #contact="ngModel" type="text" required
+            email>
+        <div *ngIf="contact.errors">
+            <span *ngIf="contact.errors?.['required']">L'email est requis</span>
+            <span *ngIf="contact.errors?.['email']">L'email n'est paas valide</span>
+        </div>
+    </fieldset>
+    <button type="submit">Sauvegarder </button>
+</form>
